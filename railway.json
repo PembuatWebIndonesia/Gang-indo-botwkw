@@ -1,0 +1,66 @@
+# 🚂 Railway.app Configuration
+
+## railway.json - Railway Service Definition
+
+```json
+{
+  "$schema": "https://railway.app/railway.schema.json",
+  "name": "Gang Indo Bot",
+  "description": "Premium Indonesian Discord Bot - 24/7 Online",
+  "services": {
+    "api": {
+      "image": "node:18-alpine",
+      "build": {
+        "command": "npm install && npm run build"
+      },
+      "start": "npm start",
+      "port": 3000,
+      "domain": true,
+      "environment": {
+        "NODE_ENV": "production",
+        "PORT": "3000"
+      },
+      "volumes": [
+        {
+          "path": "/app/dist",
+          "type": "ephemeral"
+        }
+      ]
+    }
+  },
+  "plugins": {
+    "postgres": {
+      "type": "postgres",
+      "version": "15"
+    }
+  }
+}
+```
+
+## Cara Setup:
+
+1. **Create Railway Account**: https://railway.app
+2. **Connect GitHub**: Authorize Railway dengan GitHub
+3. **Deploy from GitHub**:
+   - Select repo: `PembuatWebIndonesia/Gang-indo-botwkw`
+   - Select branch: `setup/24-7-production`
+4. **Add Environment Variables**:
+   ```
+   DISCORD_TOKEN=your_token
+   DISCORD_CLIENT_ID=your_client_id
+   DISCORD_GUILD_ID=your_guild_id
+   ```
+5. **Deploy**: Railway auto-detects Node.js dan auto-deploy!
+
+## Railway Benefits vs Render:
+
+✅ **NO auto-sleep** - Always 24/7 online  
+✅ **1GB RAM** vs Render 512MB  
+✅ **$5/month free** includes database  
+✅ **Instant deploys** - ~30 detik  
+✅ **Better support** - Discord community  
+✅ **No Keep-Alive needed** 🎉
+
+---
+
+**Rekomendasi**: Gunakan Railway! 🚂
