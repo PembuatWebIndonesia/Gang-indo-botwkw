@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: gang-indo-bot
+    env: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: DISCORD_TOKEN
+        scope: build
+        description: "Discord Bot Token"
+      - key: NODE_ENV
+        value: production
+    autoRestart: "on_failure"
+    maxInstanceCount: 1
+    healthCheckPath: /health
+    healthCheckInterval: 60
+    headers:
+      - path: .*
+        name: X-Frame-Options
+        value: SAMEORIGIN
